@@ -54,7 +54,7 @@ Click Permissions → allow Domain Computers or Domain Users Read access (or Rea
 
 ---
 
-## 🖥️ Step 5: Test Deployment
+## 🖥️ Step 4: Test Deployment
 On a domain-joined client VM:
 ```cmd
 gpupdate /force
@@ -64,7 +64,7 @@ gpupdate /force
 
 ---
 
-## 🔍 Step 6: Verify
+## 🔍 Step 5: Verify
 Check applied GPOs:
 ```cmd
 gpresult /R
