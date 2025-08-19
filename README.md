@@ -7,7 +7,7 @@ It’s a classic IT admin task and a great hands-on project for learning about G
 
 ## 🛠️ Lab Setup / Prerequisites
 - Windows Server (Domain Controller with Group Policy Management)
-- Domain-joined Windows client VM (for more on this process, see my [Azure Active Directory Demo](https://github.com/nahobbs5/AzureActiveDirectoryDemo)
+- Domain-joined Windows client VM (for more on this process, see my [Azure Active Directory Demo](https://github.com/nahobbs5/AzureActiveDirectoryDemo))
 - Shared folder for hosting MSI installers
 
 ---
