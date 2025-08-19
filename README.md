@@ -15,7 +15,7 @@ It’s a classic IT admin task and a great hands-on project for learning about G
 ## 📦 Step 1: Prepare the Installer
 1. Download **7-Zip MSI** (not EXE):  
    👉 [https://www.7-zip.org/download.html](https://www.7-zip.org/download.html)
-2. Place the MSI in a shared folder on your domain controller:  
+2. Place the MSI in a shared folder for hosting MSI installers (or use the built-in SYSVOL share for simplicity):
    a. Create a folder (e.g., C:\Documents\SoftwareShare).  
    b. Right-click → Properties → Sharing tab → Advanced Sharing.  
    c. Check "Share this folder"
@@ -23,7 +23,7 @@ It’s a classic IT admin task and a great hands-on project for learning about G
 Click Permissions → allow Domain Computers or Domain Users Read access (or Read/Write if needed).
    
    ```
-   ex \\DC01\Software\7-Zip\
+   Ex: \\DC01\Software\7-Zip\
    ```
 3. Set permissions:  
    - **Share**: Everyone = Read  
@@ -59,7 +59,7 @@ On a domain-joined client VM:
 ```cmd
 gpupdate /force
 ```
-- Your terminal will ask to reboot the system. Select "y".
+- If prompted, allow the system to reboot. Otherwise, reboot manually to trigger installation.
 - Log in → confirm **7-Zip is installed** (Start Menu or Programs & Features)
 
 ---
@@ -74,18 +74,19 @@ Or export a full HTML report:
 gpresult /H report.html
 ```
 
-## If issues occur:
+## If issues occur
 - Check **Event Viewer**:  
   ```
   Applications and Services Logs → Microsoft → Windows → GroupPolicy → Operational
+  And/or Windows Logs → Application → Source: MsiInstaller
   ```
 - Double click on any error messages
 - Re-check MSI path + permissions  
-if you have issues using the "tradititional" Universal Naming Convention (UNC):
+f you encounter issues using the traditional UNC path:
   ```
-  \\<ServerName>\<ShareName>\<FileName>
+  (\\<ServerName>\<ShareName>\<FileName>)
   ```
-  try
+  try using the built-in SYSVOL path instead
   ```
   \\yourdomain.local\SYSVOL\yourdomain.local\scripts\
   ```
@@ -98,7 +99,7 @@ if you have issues using the "tradititional" Universal Naming Convention (UNC):
 
 ---
 
-## 📌 Extensions/Further Steps
+## 📌 Extensions / Further Steps
 - Deploy **Google Chrome Enterprise MSI** for real-world practice  
 - Deploy to specific **security groups** instead of all computers  
 - Combine with **software restriction policies** (e.g., block WinRAR, allow 7-Zip) 
