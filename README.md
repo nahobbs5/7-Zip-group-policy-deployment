@@ -1,7 +1,7 @@
 # 🚀 Deploying 7-Zip via Group Policy
 
 This project demonstrates how to use **Active Directory Group Policy** to automatically deploy software (in this case, **7-Zip**) to domain-joined computers.  
-It’s a classic IT admin task and a great hands-on project for learning Group Policy Objects (GPOs).
+It’s a classic IT admin task and a great hands-on project for learning about Group Policy Objects (GPOs).
 
 ---
 
@@ -15,17 +15,17 @@ It’s a classic IT admin task and a great hands-on project for learning Group P
 ## 📦 Step 1: Prepare the Installer
 1. Download **7-Zip MSI** (not EXE):  
    👉 [https://www.7-zip.org/download.html](https://www.7-zip.org/download.html)
-2. Place the MSI in a shared folder on your domain controller:
-   a. Create a folder (e.g., C:\Documents\SoftwareShare).
-   b. Right-click → Properties → Sharing tab → Advanced Sharing.
+2. Place the MSI in a shared folder on your domain controller:  
+   a. Create a folder (e.g., C:\Documents\SoftwareShare).  
+   b. Right-click → Properties → Sharing tab → Advanced Sharing.  
    c. Check "Share this folder"
 
 Click Permissions → allow Domain Computers or Domain Users Read access (or Read/Write if needed).
    
    ```
-   \\DC01\Software\7-Zip\
+   ex \\DC01\Software\7-Zip\
    ```
-4. Set permissions:  
+3. Set permissions:  
    - **Share**: Everyone = Read  
    - **NTFS**: Domain Computers = Read & Execute  
 
@@ -59,12 +59,12 @@ On a domain-joined client VM:
 ```cmd
 gpupdate /force
 ```
-- Reboot the system  
+- Your terminal will ask to reboot the system. Select "y".
 - Log in → confirm **7-Zip is installed** (Start Menu or Programs & Features)
 
 ---
 
-## 🔍 Step 5: Verify
+## 🔍 Step 5: Additional Verification
 Check applied GPOs:
 ```cmd
 gpresult /R
@@ -74,14 +74,22 @@ Or export a full HTML report:
 gpresult /H report.html
 ```
 
-If issues occur:
+## If issues occur:
 - Check **Event Viewer**:  
   ```
   Applications and Services Logs → Microsoft → Windows → GroupPolicy → Operational
   ```
 - Double click on any error messages
 - Re-check MSI path + permissions  
-
+if you have issues using the "tradititional" Universal Naming Convention (UNC):
+  ```
+  \\<ServerName>\<ShareName>\<FileName>
+  ```
+  try
+  ```
+  \\yourdomain.local\SYSVOL\yourdomain.local\scripts\
+  ```
+  This will resolve any file sharing concerns, since clients _always_ have access to SYSVOL
 ---
 
 ## ✅ Success Criteria
