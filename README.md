@@ -47,8 +47,8 @@ Click Permissions → allow Domain Computers or Domain Users Read access (or Rea
 2. Right-click → **New → Package…**  
 3. Browse to the UNC path of the MSI:  
    ```
-   ex. \\lab.local\SYSVOL\lab.local\scripts\7z2408-x64.msi
-   Select file name ("7z2408-x64.msi")
+   Ex. \\lab.local\SYSVOL\lab.local\scripts\7z2408-x64.msi
+   Select ("7z2408-x64.msi")
    ```
 4. Choose **Assigned**  
 
@@ -82,7 +82,7 @@ gpresult /H report.html
   ```
 - Double click on any error messages
 - Re-check MSI path + permissions  
-f you encounter issues using the traditional UNC path:
+If you encounter issues using the traditional UNC path:
   ```
   (\\<ServerName>\<ShareName>\<FileName>)
   ```
