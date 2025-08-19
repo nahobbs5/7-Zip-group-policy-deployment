@@ -50,7 +50,11 @@ Click Permissions → allow Domain Computers or Domain Users Read access (or Rea
    Ex. \\lab.local\SYSVOL\lab.local\scripts\7z2408-x64.msi
    Select ("7z2408-x64.msi")
    ```
-4. Choose **Assigned**  
+4. Choose **Assigned**
+
+![Software Installation](images/SoftwareInstallation.PNG) 
+![Assigned/Unassigned](images/AssignedUnassigned.PNG)
+
 
 ---
 
