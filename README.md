@@ -52,8 +52,8 @@ Click Permissions → allow Domain Computers or Domain Users Read access (or Rea
    ```
 4. Choose **Assigned**
 
-![Software Installation](images/SoftwareInstallation.PNG) 
-![Assigned/Unassigned](images/AssignedUnassigned.PNG)
+![Software Installation](images/SoftwareInstallation.png) 
+![Assigned/Unassigned](images/AssignedUnassigned.png)
 
 
 ---
